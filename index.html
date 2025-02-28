@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thought-Provoking Quotes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle">☰</button>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar show-on-desktop">
+        <div class="sidebar-header">
+            <h2>Milan Laudari</h2>
+        </div>
+        
+        <div class="sidebar-nav">
+            <a href="/" class="content-link">About</a>
+            <a href="/good-blogs/index.html" class="content-link">Good Blogs</a>
+            <a href="/quotes/index.html" class="content-link active">Quotes</a>
+            <a href="/books-notes/index.html" class="content-link">Books Notes</a>
+            <a href="/enginnering/index.html" class="content-link">Engineering</a>
+        </div>
+        
+        <div class="theme-switch-wrapper">
+            <span class="theme-icon">☀️</span>
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+            <span class="theme-icon">🌙</span>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="social-links">
+                <a href="https://x.com/MilLaudari" target="_blank">X</a>
+                <a href="https://github.com/milanlaudari" target="_blank">GitHub</a>
+                <a href="https://substack.com/@milanlaudari" target="_blank">Substack</a>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Main content area -->
+    <div class="content-wrapper">
+        <header>
+            <nav class="nav-container">
+                <div class="breadcrumbs">
+                    <a href="/index.html">Home</a> / <span>Quotes</span>
+                </div>
+            </nav>
+            <h1>Quotes</h1>
+        </header>
+        
+        <main>
+            <div class="quote">
+                <p>"The actual truth is that there are many more secrets to find, but they will yield only to relentless searchers"</p>
+                <p class="attribution">— Peter Thiel</p>
+            </div>
+
+            <div class="quote">
+                <p>"Rest enough for the individual man. Too much of it and too soon, and we call it death. But for Man no rest and no ending. He must go on conquest beyond conquest. This little planet and its winds and ways, and all the laws of mind and matter that restrain him. Then all the planets about him, and at last out across immensity to the stars. And when he has conquered all the deeps of space and all the mysteries of time—still he will be beginning."</p>
+                <p class="attribution">— H. G. Wells, Things to Come</p>
+            </div>
+
+            <div class="quote">
+                <p>"A dark age is not when you've forgotten how do something. It's when you've forgotten that you could."</p>
+                <p class="attribution">— David Altrogge</p>
+            </div>
+
+            <div class="quote">
+                <p>"As the technium expanded, we have passed many fertile Gardens of Eden, but there has always been an angel with a flaming sword guarding against our access in the name of some religion or social movement, or simply bureaucracies barring entry in the name of safety or, most insanely, not allowing people to make money"</p>
+                <p class="attribution">— J. Storrs Hall</p>
+            </div>
+
+            <div class="quote">
+                <p>"Man perisheth. That may be, but let us struggle even though we perish; and if nothing is to be our portion, let it not come to us as a just reward.
+                    "</p>
+                <p class="attribution">— Senancour</p>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            document.body.classList.toggle('sidebar-open');
+            
+            if (sidebar.classList.contains('active')) {
+                mobileMenuToggle.style.left = '240px';
+            } else {
+                mobileMenuToggle.style.left = '20px';
+            }
+        });
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768 && 
+                sidebar.classList.contains('active') && 
+                !sidebar.contains(e.target) && 
+                e.target !== mobileMenuToggle) {
+                sidebar.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+                mobileMenuToggle.style.left = '20px';
+            }
+        });
+        
+        // Resize handler
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('active');
+                sidebar.classList.add('show-on-desktop');
+                document.body.classList.remove('sidebar-open');
+                mobileMenuToggle.style.left = '20px';
+            } else {
+                sidebar.classList.remove('show-on-desktop');
+            }
+        });
+        
+        // Initialize sidebar visibility based on screen size
+        window.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('show-on-desktop');
+            } else {
+                sidebar.classList.add('show-on-desktop');
+            }
+        });
+    </script>
+</body>
+</html>
